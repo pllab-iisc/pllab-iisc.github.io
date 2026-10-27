@@ -20,26 +20,26 @@
 
   const MEMBERS = [
     { key: "phd", title: "PhD", people: [
-      ["Sajiv Kumar J. S.", "", ""],
+      ["Sajiv Kumar J. S.", "https://www.csa.iisc.ac.in/people/sajiv-kumar-j-s/", ""],
       ["Raseek C", "https://gecskp.ac.in/faculty/20/raseek-c", ""],
       ["Alvin George", "", ""],
-      ["Abhishek Uppar", "", ""],
+      ["Abhishek Uppar", "https://www.linkedin.com/in/abhishek-u-34159535/", ""],
       ["Alan Jojo", "https://alanjojo.gitlab.io/", ""]
     ]},
     { key: "mtr", title: "M.Tech (Research)", people: [
-      ["Vikrant Singh Jaryal", "", ""]
+      ["Vikrant Singh Jaryal", "https://www.csa.iisc.ac.in/people/vikrant-singh-jaryal/", ""]
     ]},
     { key: "mtech", title: "M.Tech", people: [
-      ["Rahul Jose", "", ""],
+      ["Rahul Jose", "https://www.csa.iisc.ac.in/people/rahul-jose/", ""],
       ["Melchizedek T.P.", "https://melchizedektp.github.io/", ""],
-      ["Namratha T.", "", ""],
-      ["Ancita Lewis", "", ""],
-      ["Vivek Kumar", "", ""],
-      ["Aditya Dhodade", "", ""],
-      ["Adityakumar P", "", ""]
+      ["T Namratha", "https://www.csa.iisc.ac.in/people/t-namratha/", ""],
+      ["Ancita Lewis", "https://www.csa.iisc.ac.in/people/ancita-lewis/", ""],
+      ["Vivek Kumar", "https://www.csa.iisc.ac.in/people/vivek-kumar-2/", ""],
+      ["Aditya Namdev Dhodade", "https://www.csa.iisc.ac.in/people/aditya-namdev-dhodade/", ""],
+      ["Adityakumar Panchal", "https://www.csa.iisc.ac.in/people/adityakumar-panchal/", ""]
     ]},
     { key: "ra", title: "Research Assistant", people: [
-      ["Amrit Mahendra Joseph", "", ""]
+      ["Amrit Mahendra Joseph", "https://www.linkedin.com/in/amritmj/", ""]
     ]}
   ];
 
