@@ -15,25 +15,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/courses.css">
+  <link rel="stylesheet" href="css/people.css">
+  <script src="js/courses.js" defer></script>
+  <script src="js/pubs.js" defer></script>
+  <script src="js/people.js" defer></script>
 </head>
-<body>
+<body data-root="" data-page="home">
 
-<header class="topbar">
-  <div class="wrap topbar-inner">
-    <a class="brand" href="#top">
-      <img src="images/logo-mark.png" alt="" width="34" height="34">
-      <span class="brand-name">PL Lab</span><span class="brand-inst">IISc</span>
-    </a>
-    <nav aria-label="Sections">
-      <a href="#research">Research</a>
-      <a href="#people">People</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#papers">Papers</a>
-      <a href="#join">Join</a>
-    </nav>
-  </div>
-</header>
+<!-- Header and footer come from js/layout.js -->
+<header class="topbar" id="site-header"></header>
+<script src="js/layout.js"></script>
 
 <main id="top">
 
@@ -43,7 +37,12 @@
       <div class="hero-text">
         <h1>Programming Languages Lab</h1>
         <p class="lede">We build the theory and tools that let people reason about programs: what they compute, whether they are correct, and how to change them safely.</p>
-        <p class="affil">Department of Computer Science and Automation<br>Indian Institute of Science, Bengaluru</p>
+        <p class="affil">
+          <a class="map-link" href="https://maps.app.goo.gl/goDp8isBvcXSiGf57" aria-label="Show on Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          </a>
+          <span>Department of Computer Science and Automation<br>Indian Institute of Science, Bengaluru</span>
+        </p>
       </div>
 
       <!-- A Hasse diagram of the lab's research themes. Edit labels freely. -->
@@ -95,21 +94,31 @@
     </div>
   </section>
 
+  <!-- News: newest first -->
+  <section id="news" class="block">
+    <div class="wrap">
+      <h2>News</h2>
+      <ul class="news">
+        <li><time datetime="2025-10">Oct 2025</time><p>The lab co-organised <a href="https://atva-conference.org/">ATVA 2025</a>, held in Bengaluru from 28 to 30 October. Deepak D'Souza was General Chair and K. V. Raghavan was PC co-chair.</p></li>
+      </ul>
+    </div>
+  </section>
+  
   <!-- Research -->
-  <section id="research" class="block">
+  <section id="research" class="block tinted">
     <div class="wrap">
       <h2>Research</h2>
       <p class="intro">Our work sits where programming languages, formal methods and software engineering meet. We care about techniques that are sound and also work on real code.</p>
 
       <div class="themes">
         <article class="theme">
-          <span class="glyph" aria-hidden="true">⊑</span>
+          <span class="glyph" aria-hidden="true">⊔</span>
           <h3>Static analysis</h3>
           <p>Data-flow analysis, abstract interpretation and points-to analysis, including analyses for asynchronous message-passing systems and precise program slicing.</p>
         </article>
         <article class="theme">
-          <span class="glyph" aria-hidden="true">⊢</span>
-          <h3>Program verification</h3>
+          <span class="glyph" aria-hidden="true">⊨</span>
+          <h3>Formal verification</h3>
           <p>Deductive verification and model checking of software, from operating-system kernels to controllers, and models and logics for real-time systems.</p>
         </article>
         <article class="theme">
@@ -122,214 +131,38 @@
   </section>
 
   <!-- People -->
-  <section id="people" class="block tinted">
+  <section id="people" class="block">
     <div class="wrap">
       <h2>People</h2>
 
+      <!-- Faculty and members are filled from js/people.js -->
       <h3 class="sub">Faculty</h3>
-      <div class="faculty">
-        <a class="person" href="https://www.csa.iisc.ac.in/~deepakd/">
-          <span class="avatar" aria-hidden="true">DD</span>
-          <div>
-            <h4>Deepak D'Souza</h4>
-            <p class="role">Professor</p>
-            <p>Program verification, static analysis, model checking, and models and logics for real-time systems.</p>
-          </div>
-        </a>
-        <a class="person" href="https://www.csa.iisc.ac.in/~raghavan/">
-          <span class="avatar" aria-hidden="true">KVR</span>
-          <div>
-            <h4>Komondoor V. Raghavan</h4>
-            <p class="role">Associate Professor</p>
-            <p>Distributed systems, Programming languages, program analysis and software engineering, with a focus on tools that help programmers understand, verify and transform programs.</p>
-          </div>
-        </a>
-      </div>
+      <div class="faculty" id="faculty"></div>
 
-      <!-- Lab members. Keep each list chronological by joining date -->
-      <div class="members">        
-        <div class="group g-phd">
-          <h3 class="sub">PhD</h3>
-          <ul class="roster">
-            <li>Sajiv Kumar J. S. <span class="kvr">KVR</span></li>
-            <li><a href="https://gecskp.ac.in/faculty/20/raseek-c">Raseek C</a> <span class="kvr">KVR</span></li>
-            <li>Alvin George <span class="dd">DD</span></li>
-            <li>Anshuman Dhuliya <span class="kvr">KVR</span><small>With Uday Khedker; enrolled at IIT Bombay</small></li>
-            <li>Abhishek Uppar <span class="dd">DD</span></li>
-            <li><a href="https://alanjojo.gitlab.io/">Alan Jojo</a> <span class="kvr">KVR</span></li>
-          </ul>
-        </div>
-
-        <div class="group g-mtr">
-          <h3 class="sub">M.Tech (Research)</h3>
-          <ul class="roster">
-            <li>Vikrant Singh Jaryal <span class="kvr">KVR</span></li>
-          </ul>
-        </div>
-
-        <div class="group g-mtech">
-          <h3 class="sub">M.Tech</h3>
-          <ul class="roster">
-            <li>Rahul Jose <span class="kvr">KVR</span></li>
-            <li><a href="https://melchizedektp.github.io/">Melchizedek T.P.</a> <span class="dd">DD</span></li>
-            <li>Namratha T. <span class="dd">DD</span></li>
-            <li>Ancita Lewis <span class="kvr">KVR</span></li>
-            <li>Vivek Kumar <span class="kvr">KVR</span></li>
-            <li>Aditya Dhodade <span class="kvr">KVR</span></li>
-            <li>Adityakumar P <span class="kvr">KVR</span></li>
-          </ul>
-        </div>
-
-        <div class="group g-ra">
-          <h3 class="sub">Research Assistant</h3>
-          <ul class="roster">
-            <li>Amrit Mahendra Joseph <span class="dd">DD</span></li>
-          </ul>
-        </div>
-      </div>
-      <p class="note">Alumni are listed on each faculty member's home page.</p>
+      <div class="members" id="members"></div>
+      <p class="note">Former students are listed on the <a href="html/alumni.html">alumni page</a>.</p>
     </div>
   </section>
 
-  <!-- Teaching -->
-  <section id="teaching" class="block">
+  <!-- Recent publications: filled from js/pubs.js -->
+  <section id="publications" class="block tinted">
     <div class="wrap">
-      <h2>Teaching</h2>
+      <h2>Recent publications</h2>
+      <p class="intro">The lab's latest papers. The <a href="html/publications.html">full list</a> can be browsed by year or by topic.</p>
+
+      <ol class="papers" id="recent-pubs" data-limit="10"></ol>
+      <p class="note"><a href="html/publications.html">All publications →</a></p>
+    </div>
+  </section>
+
+  <!-- Courses: filled from js/courses.js -->
+  <section id="courses" class="block">
+    <div class="wrap">
+      <h2>Related Courses</h2>
       <p class="intro">Core courses taught by the lab's faculty</p>
 
-      <div class="courses">
-        <article class="course">
-          <p class="code">E0 227</p>
-          <h3><a href="https://www.csa.iisc.ac.in/~deepakd/pav-2026/">Program Analysis and Verification</a></h3>
-          <p>The foundations of reasoning about programs: semantics, abstract interpretation and data-flow analysis, and program verification.</p>
-          <p class="past">Offerings:
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2026/">2026</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2025/">2025</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2024/">2024</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2023/">2023</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2022/">2022</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2021/">2021</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2019/">2019</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2018/">2018</a>
-            <a href="https://www.csa.iisc.ac.in/~raghavan/pav2017/">2017</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 211</p>
-          <h3><a href="http://www.csa.iisc.ac.in/~raghavan/cml2026/">Compilers and Runtime Systems for Modern Languages</a></h3>
-          <p>CML</p>
-          <p class="past">Offerings:
-            <a href="https://www.csa.iisc.ac.in/~raghavan/cml2026/">2026</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 272</p>
-          <h3><a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2026/">Formal Methods in Software Engineering</a></h3>
-          <p>Using formal specification, modelling and verification tools in the design and construction of software systems.</p>
-          <p class="past">Offerings:
-            <a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2026/">2026</a>
-            <a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2024/">2024</a>
-            <a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2022/">2022</a>
-            <a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2020/">2020</a>
-            <a href="https://www.csa.iisc.ac.in/~deepakd/fmse-2018/">2018</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 222</p>
-          <h3><a href="http://www.csa.iisc.ac.in/~deepakd/atc-2026/">Automata Theory and Computability</a></h3>
-          <p>Automata Theory and Computability</p>
-          <p class="past">Offerings:
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2026/">2026</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2025/">2025</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2024/">2024</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2021/">2021</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2019/">2019</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/atc-2018/">2018</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 209</p>
-          <h3><a href="http://www.csa.iisc.ac.in/~raghavan/pods2022/">Principles of Distributed Software</a></h3>
-          <p>Principles of Distributed Software</p>
-          <p class="past">Offerings:
-            <a href="http://www.csa.iisc.ac.in/~raghavan/pods2022/">2022</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 205</p>
-          <h3><a href="http://www.csa.iisc.ac.in/~deepakd/logic-2025/">Mathematical Logic and Theorem Proving</a></h3>
-          <p>Mathematical Logic and Theorem Proving</p>
-          <p class="past">Offerings:
-            <a href="http://www.csa.iisc.ac.in/~deepakd/logic-2025/">2025</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/logic-2023/">2023</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/logic-2021/">2021</a>
-          </p>
-        </article>
-        <article class="course">
-          <p class="code">E0 327</p>
-          <h3><a href="http://www.csa.iisc.ac.in/~deepakd/topics-pav-2021/">Topics in Program Analysis</a></h3>
-          <p>Topics in Program Analysis</p>
-          <p class="past">Offerings:
-            <a href="http://www.csa.iisc.ac.in/~deepakd/topics-pav-2021/">2021</a>
-            <a href="http://www.csa.iisc.ac.in/~deepakd/tpa-2016/">2016</a>
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Joint papers -->
-  <section id="papers" class="block tinted">
-    <div class="wrap">
-      <h2>Joint papers</h2>
-      <p class="intro">Work co-authored by both faculty. For complete publication lists, see the pages of
-        <a href="https://www.csa.iisc.ac.in/~deepakd/papers/index-cron.html">Deepak D'Souza</a> and
-        <a href="https://www.csa.iisc.ac.in/~raghavan/pubs.html">Komondoor V. Raghavan</a>.</p>
-
-      <ol class="papers" reversed>
-        <li>
-          <span class="year">2021</span>
-          <div>
-            <cite>GenSys: A scalable fixed-point engine for maximal controller synthesis over infinite state spaces</cite>
-            <span class="authors">Stanly Samuel, Deepak D'Souza, Raghavan Komondoor</span>
-            <span class="venue">ESEC/FSE 2021, Demonstrations track <a href="https://www.csa.iisc.ac.in/~raghavan/ReadingMaterial/fse2021-tool.pdf">PDF</a></span>
-          </div>
-        </li>
-        <li>
-          <span class="year">2016</span>
-          <div>
-            <cite>An optimization approach for matching textual domain models with existing code</cite>
-            <span class="authors">Tejas Patil, Raghavan Komondoor, Deepak D'Souza, Indrajit Bhattacharya</span>
-            <span class="venue">ICSME 2016 <a href="https://www.csa.iisc.ac.in/~raghavan/ReadingMaterial/icsme2016.pdf">PDF</a></span>
-          </div>
-        </li>
-        <li>
-          <span class="year">2013</span>
-          <div>
-            <cite>Using relationships for matching textual domain models with existing code</cite>
-            <span class="authors">Raghavan Komondoor, Indrajit Bhattacharya, Deepak D'Souza, Sachin Kale</span>
-            <span class="venue">WCRE 2013 <a href="https://www.csa.iisc.ac.in/~raghavan/ReadingMaterial/wcre13.pdf">PDF</a></span>
-          </div>
-        </li>
-        <li>
-          <span class="year">2010</span>
-          <div>
-            <cite>A case study in matching service descriptions to implementations in an existing system</cite>
-            <span class="authors">Hari S. Gupta, Deepak D'Souza, Raghavan Komondoor, Girish M. Rama</span>
-            <span class="venue">ICSM 2010 <a href="https://www.csa.iisc.ac.in/~raghavan/ReadingMaterial/GuptaCaseStudy-CameraReady.pdf">PDF</a></span>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- News: newest first -->
-  <section id="news" class="block">
-    <div class="wrap">
-      <h2>News</h2>
-      <ul class="news">
-        <li><time datetime="2025-10">Oct 2025</time><p>The lab co-organised <a href="https://atva-conference.org/">ATVA 2025</a>, held in Bengaluru from 28 to 30 October. Deepak D'Souza was General Chair and K. V. Raghavan was PC co-chair.</p></li>
-      </ul>
+      <div class="courses" id="course-list" data-compact></div>
+      <p class="note"><a href="html/courses.html">Course details and past offerings →</a></p>
     </div>
   </section>
 
@@ -345,19 +178,7 @@
 
 </main>
 
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <img src="images/logo-mark.png" alt="" width="44" height="44">
-      <address>
-        Programming Languages Lab<br>
-        Department of Computer Science and Automation<br>
-        Indian Institute of Science, Bengaluru 560 012
-      </address>
-    </div>
-    <p><a href="https://www.csa.iisc.ac.in/">CSA, IISc</a><br><a href="https://github.com/pllab-iisc">GitHub</a></p>
-  </div>
-</footer>
+<footer class="footer" id="site-footer"></footer>
 
 </body>
 </html>

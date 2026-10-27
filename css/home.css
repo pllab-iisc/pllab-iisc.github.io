@@ -1,0 +1,108 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #e4edf6;
+  background:
+    radial-gradient(60rem 30rem at 85% 20%, rgba(52, 199, 154, 0.22), transparent 60%),
+    radial-gradient(50rem 30rem at 10% 110%, rgba(59, 111, 216, 0.35), transparent 60%),
+    var(--navy);
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+.hero h1 {
+  font: 700 clamp(2.5rem, 5.6vw, 4rem)/1.05 var(--head);
+  letter-spacing: -0.025em;
+  margin: 0 0 1.5rem;
+  color: #fff;
+}
+.lede { font-size: 1.3rem; line-height: 1.5; max-width: 34ch; margin: 0 0 1.5rem; color: #d3e1ee; }
+.affil { display: flex; align-items: center; gap: 0.75rem; color: #8fa8c2; margin: 0 0 2rem; font-size: 1rem; }
+.map-link {
+  flex: none;
+  display: grid; place-items: center;
+  width: 2.6rem; height: 2.6rem;
+  border-radius: 10px;
+  color: #7fe3c4;
+  background: rgba(127, 227, 196, 0.1);
+  border: 1px solid rgba(127, 227, 196, 0.3);
+  transition: background 0.15s ease;
+}
+.map-link svg { width: 1.4rem; height: 1.4rem; }
+.map-link:hover { background: rgba(127, 227, 196, 0.2); }
+
+.lattice { margin: 0; }
+.lattice svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lattice .edges line { stroke-width: 1.6; stroke-opacity: 0.75; }
+.lattice .nodes circle { fill: var(--navy); stroke: #5fd6c4; stroke-width: 2.5; }
+.lattice .nodes circle.ext { fill: #3ddc97; stroke: none; filter: drop-shadow(0 0 6px rgba(61, 220, 151, 0.8)); }
+.lattice .nodes circle.bot { fill: #3b6fd8; filter: drop-shadow(0 0 6px rgba(59, 111, 216, 0.9)); }
+.lattice .labels text {
+  font: 500 13px var(--head);
+  fill: #e4edf6;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: var(--navy);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.lattice .labels text.sym { text-anchor: start; font: 400 17px var(--head); fill: #8fa8c2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lattice .edges line { stroke-dasharray: 200; stroke-dashoffset: 200; animation: draw 1.1s ease-out forwards; }
+  .lattice .edges line:nth-child(n+4) { animation-delay: 0.25s; }
+  .lattice .edges line:nth-child(n+10) { animation-delay: 0.5s; }
+  .lattice .labels { opacity: 0; animation: fade 0.6s ease-out 0.7s forwards; }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: 1; } }
+
+@media (max-width: 52rem) {
+  .hero-inner { grid-template-columns: 1fr; padding-top: 3.5rem; padding-bottom: 3.5rem; gap: 2.5rem; }
+  .lattice { max-width: 26rem; }
+}
+
+.news { list-style: none; margin: 0; padding: 0 0 0 1.5rem; max-width: var(--measure); border-left: 2px solid var(--rule); }
+.news li { position: relative; padding: 0 0 1.75rem; }
+.news li::before {
+  content: ""; position: absolute; left: calc(-1.5rem - 7px); top: 0.35rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 0 4px var(--paper);
+}
+.news time { display: block; font: 600 0.92rem var(--head); color: var(--teal); margin-bottom: 0.2rem; }
+.news p { margin: 0; }
+
+.themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2.5rem; }
+.theme {
+  border-left: 2px solid var(--rule);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+}
+.glyph {
+  display: grid; place-items: center;
+  width: 2.25rem; height: 2.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 9px;
+  background: var(--navy);
+  color: #5fe0b6;
+  font: 500 1.15rem/1 var(--head);
+}
+.theme h3 { font: 600 1.05rem/1.3 var(--head); margin: 0 0 0.35rem; }
+.theme p { margin: 0; color: var(--muted); font-size: 1rem; }
+@media (max-width: 56rem) { .themes { grid-template-columns: 1fr; } .theme p { max-width: 60ch; } }
+
+.join p { max-width: var(--measure); margin: 0 0 1rem; }
+.join .btn { margin-top: 0.75rem; }

@@ -1,0 +1,47 @@
+.courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.course {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+.course .code {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #5fe0b6;
+  font: 600 0.88rem var(--head);
+  letter-spacing: 0.02em;
+}
+.course h3 { font: 600 1.3rem/1.3 var(--head); margin: 0 0 0.6rem; }
+.course h3 a { color: var(--ink); text-decoration: none; }
+.course h3 a:hover { color: var(--teal); }
+.course p { margin: 0 0 1rem; color: var(--muted); }
+.course .past { font-size: 0.95rem; margin: 0; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.course .past a, .course .past span {
+  display: inline-block; margin: 0.35rem 0.2rem 0 0;
+  padding: 0.15rem 0.55rem; border-radius: 999px;
+  border: 1px solid var(--rule); text-decoration: none; font-size: 0.9rem;
+}
+.course .past span { color: var(--muted); border-style: dashed; }
+.course .past a:hover { border-color: var(--teal); }
+
+.course { position: relative; transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; }
+.course h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.course h3 a:focus-visible { outline: none; }
+.course:focus-within { outline: 2px solid var(--teal); outline-offset: 3px; }
+.course:has(.past a:focus-visible) { outline: none; }
+.course .past a { position: relative; z-index: 1; }
+.course:hover { transform: translateY(-2px); border-color: var(--teal); box-shadow: 0 12px 28px -16px rgba(11, 33, 66, 0.45); }
+.course:hover h3 a { color: var(--teal); }
+@media (prefers-reduced-motion: reduce) { .course, .course:hover { transition: none; transform: none; } }
+@media (max-width: 48rem) { .courses { grid-template-columns: 1fr; } }
+
+.courses[data-compact] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.courses[data-compact] .course { padding: 1.2rem 1.35rem; }
+.courses[data-compact] .course .code { margin-bottom: 0.6rem; }
+.courses[data-compact] .course h3 { font-size: 1.05rem; margin: 0; }
+@media (max-width: 56rem) { .courses[data-compact] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 36rem) { .courses[data-compact] { grid-template-columns: 1fr; } }
