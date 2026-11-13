@@ -1,5 +1,4 @@
 # Programming Languages Lab, IISc Bangalore
-
 Website of the Programming Languages Lab, Department of Computer Science and Automation, IISc Bangalore.
 
 It has plain HTML, CSS and JavaScript with no build step. GitHub Pages serves `index.html` from the `main` branch.
@@ -7,7 +6,6 @@ It has plain HTML, CSS and JavaScript with no build step. GitHub Pages serves `i
 Most content (people, courses, publications, alumni) and the shared header and footer live in small JavaScript data files under `js/`. To add or change an entry, you usually edit one line in one file; the HTML pages do not need to change.
 
 ## Files
-
 ```
 index.html            Home page: hero, News, Research, Courses, Recent publications, People, Joining the lab
 html/
@@ -37,7 +35,6 @@ images/
 ```
 
 ## How to add or change content
-
 ### News
 In `index.html`, add a new `<li>` at the top of the list under `<!-- News -->`:
 ```html
@@ -60,8 +57,8 @@ The degree must be one of `PhD`, `M.Sc (Engg)`, `M.Tech (Research)`, `M.Tech` or
 
 ### Courses (`js/courses.js`)
 When a new offering starts:
-1. Point the course's `url` at the new course page (the card links there).
-2. Add the new year at the top of its `offerings`: `["2027", "https://..."]`.
+- Point the course's `url` at the new course page (the card links there).
+- Add the new year at the top of its `offerings`: `["2027", "https://..."]`.
 
 If an old offering has no page any more, keep the year with an empty link, `["2019", ""]`. It is still shown, but not as a link.
 
@@ -78,15 +75,14 @@ The second field is the topic, used by the "By topic" tab. It must be one of the
 Edit the nav links in `NAV`, and the address and footer links in `FOOTER`. The change applies to every page.
 
 ## Adding a new page
-
-1. Copy an existing page in `html/` (for example `courses.html`) and rename it.
-2. Change the `<title>`, the `data-page` value on `<body>`, and the content inside `<main>`.
-3. Keep `data-root="../"` on `<body>`, and keep the `site-header`, `layout.js` and `site-footer` lines as they are.
-4. To show it in the nav, add a line to `NAV` in `js/layout.js`, using the same key as `data-page`:
-   ```js
-   ["newpage", "New page", root + "html/newpage.html"],
-   ```
-5. If the page needs its own styles, add `css/newpage.css` and link it after `base.css`.
+- Copy an existing page in `html/` (for example `courses.html`) and rename it.
+- Change the `<title>`, the `data-page` value on `<body>`, and the content inside `<main>`.
+- Keep `data-root="../"` on `<body>`, and keep the `site-header`, `layout.js` and `site-footer` lines as they are.
+- To show it in the nav, add a line to `NAV` in `js/layout.js`, using the same key as `data-page`:
+  ```js
+  ["newpage", "New page", root + "html/newpage.html"],
+  ```
+- If the page needs its own styles, add `css/newpage.css` and link it after `base.css`.
 
 Pages in `html/` refer to other folders with `../` (for example `../css/base.css`, `../images/...`). `index.html` uses them without `../`.
 
@@ -95,3 +91,30 @@ Pages in `html/` refer to other folders with `../` (for example `../css/base.css
 Open `index.html` in a browser, or run `python3 -m http.server` in this folder and visit http://localhost:8000.
 
 The lists, header and footer are filled in by JavaScript, so a blank section usually means a typo in one of the `js/` data files (often a missing comma or quote). The browser's developer console (F12) shows the line with the error.
+
+## Setup for IISc CSA server deployment
+Run this after logging in to the IISc CSA server
+```bash
+git init --bare ~/pllab-site.git
+
+cat > ~/pllab-site.git/hooks/post-receive <<'EOF'
+#!/bin/bash
+while read old new ref; do
+  if [ "$ref" = "refs/heads/main" ]; then
+    git --work-tree=/var/www/pllab checkout -f main
+  fi
+done
+EOF
+
+chmod +x ~/pllab-site.git/hooks/post-receive
+```
+
+Add a host entry in `~/.ssh/config` on your local machine named `csacloud`. Add the  details for this entry from the mail shared by the CSA system administrator.
+
+On the local machine, add the server as a remote
+```bash
+git remote set-url --add --push origin git@github.com:pllab-iisc/pllab-iisc.github.io.git
+git remote set-url --add --push origin csacloud:pllab-site.git
+```
+
+After this, any `git push` from the local machine will update both the GitHub Pages and the IISc CSA server.
