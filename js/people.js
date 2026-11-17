@@ -12,7 +12,7 @@
     {
       initials: "KVR",
       name: "Komondoor V. Raghavan",
-      role: "Associate Professor",
+      role: "Professor",
       url: "https://www.csa.iisc.ac.in/~raghavan/",
       area: "Distributed systems, Programming languages, program analysis and software engineering, with a focus on tools that help programmers understand, verify and transform programs."
     }

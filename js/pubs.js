@@ -16,6 +16,7 @@
   };
 
   const PUBS = [
+    [2026, "VER", "CEGAR-Based Verification of Temporal Properties of Infinite-State Systems", "Alvin George, Deepak D'Souza, Pavithra Prabhakar", "FSTTCS 2026", ""],
     [2026, "VER", "Verification Modulo Tested Library Contracts", "Abhishek Uppar, Omar Muhammad, Sumanth Prabhu, Deepak D'Souza, P. Madhusudan, Adithya Murali", "PLDI 2026", ""],
 
     [2024, "VER", "Interval Image Abstraction for Verification of Camera-Based Autonomous Systems", "P. Habeeb, Deepak D'Souza, Kamal Lodaya, Pavithra Prabhakar", "EMSOFT 2024 (IEEE TCAD 43(11))", ""],
