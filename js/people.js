@@ -4,15 +4,15 @@
   const FACULTY = [
     {
       initials: "DD",
-      name: "Deepak D'Souza",
-      role: "Professor",
+      name: "Prof. Deepak D'Souza",
+      role: "",
       url: "https://www.csa.iisc.ac.in/~deepakd/",
       area: "Program verification, static analysis, model checking, and models and logics for real-time systems."
     },
     {
       initials: "KVR",
-      name: "Komondoor V. Raghavan",
-      role: "Professor",
+      name: "Prof. Komondoor V. Raghavan",
+      role: "",
       url: "https://www.csa.iisc.ac.in/~raghavan/",
       area: "Distributed systems, Programming languages, program analysis and software engineering, with a focus on tools that help programmers understand, verify and transform programs."
     }
